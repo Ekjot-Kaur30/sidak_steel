@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sidaksteel.com/sitemap.xml
+Sitemap: https://sidak-steel.vercel.app/sitemap.xml
