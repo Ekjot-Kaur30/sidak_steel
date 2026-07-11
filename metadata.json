@@ -1,0 +1,6 @@
+{
+  "name": "Sidak Steel",
+  "description": "Premium Stainless Steel Utensils for Every Kitchen",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

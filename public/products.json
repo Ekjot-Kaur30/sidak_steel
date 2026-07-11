@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "name": "Stainless Steel Lota",
+    "description": "Perfect for daily household use and traditional rituals. Made from heavy-gauge, food-grade stainless steel with a high-lustre mirror polish that resists rust and corrosion.",
+    "price": "₹249",
+    "category": "Kitchen Utensils",
+    "image": "/images/lota_1783603449089.jpg",
+    "rating": 4.8,
+    "specs": "Capacity: 1 Litre, Material: 202 Grade Stainless Steel, Mirror Polish Finish"
+  },
+  {
+    "id": "2",
+    "name": "Stainless Steel Glass (Set of 6)",
+    "description": "Premium rust-resistant drinking glasses, perfectly weighted and designed with smooth rolled rims for a comfortable drinking experience. Features a bright white reflections mirror finish.",
+    "price": "₹499",
+    "category": "Kitchen Utensils",
+    "image": "/images/glass_1783603466189.jpg",
+    "rating": 4.7,
+    "specs": "Capacity: 300ml per glass, Pack of 6, Food-safe, Dishwasher safe"
+  },
+  {
+    "id": "3",
+    "name": "Stainless Steel Tiffin Box (3-Tier)",
+    "description": "Classic leak-resistant tiered lunch carrier, ideal for keeping home-cooked meals fresh and warm during school, office, or travel. Equipped with heavy-duty side-locking clips.",
+    "price": "₹599",
+    "category": "Lunch & Storage",
+    "image": "/images/tiffin_1783603479978.jpg",
+    "rating": 4.9,
+    "specs": "3 Compartments, Secure Side Clips, Leak-proof Silicone Seals"
+  },
+  {
+    "id": "4",
+    "name": "Stainless Steel Fry Pan (Tri-ply)",
+    "description": "Heavy-duty professional frying pan featuring a tri-ply capsule bottom for even heat distribution. Suitable for both gas stovetops and modern induction cooktops.",
+    "price": "₹1,299",
+    "category": "Cookware",
+    "image": "/images/fry_pan_1783603493034.jpg",
+    "rating": 4.6,
+    "specs": "Diameter: 24cm, Thickness: 2.5mm, Tri-ply Aluminum Core & Steel"
+  },
+  {
+    "id": "5",
+    "name": "Stainless Steel Serving Tray",
+    "description": "Elegant rectangular platter featuring integrated handles and a premium matte-brushed surface with a mirror-finished rim. Perfect for catering, hotels, and dinner hosting.",
+    "price": "₹349",
+    "category": "Dining & Serving",
+    "image": "/images/tray_1783603506131.jpg",
+    "rating": 4.5,
+    "specs": "Size: 14x10 inches, Heavy Gauge Steel, Raised Spill-proof Edges"
+  },
+  {
+    "id": "6",
+    "name": "Stainless Steel Bowl (Katori - Set of 6)",
+    "description": "Premium deep-walled small bowls, ideal for serving dal, curries, raita, desserts, or snacks. Designed with a stackable structure for smart cabinet storage.",
+    "price": "₹299",
+    "category": "Kitchen Utensils",
+    "image": "/images/katori_1783603516071.jpg",
+    "rating": 4.7,
+    "specs": "Diameter: 3.5 inches, Pack of 6, Stackable space-saving design"
+  },
+  {
+    "id": "7",
+    "name": "Stainless Steel Pressure Cooker (5L)",
+    "description": "Highly durable outer lid pressure cooker built with premium quality steel and a heavy sandwich base for rapid, energy-efficient cooking. Includes multi-stage safety valves.",
+    "price": "₹1,899",
+    "category": "Cookware",
+    "image": "/images/pressure_cooker_1783603530362.jpg",
+    "rating": 4.8,
+    "specs": "Capacity: 5 Litres, Gas & Induction Friendly, Ergonomic Stay-Cool Handles"
+  },
+  {
+    "id": "8",
+    "name": "Stainless Steel Dinner Plate (Set of 6)",
+    "description": "Thick-gauge elegant dining plates with a gorgeous mirror-polished finish and smooth safe borders. Perfect for serving meals in residential homes, hostels, and catering services.",
+    "price": "₹799",
+    "category": "Dining & Serving",
+    "image": "/images/dinner_set_1783603542763.jpg",
+    "rating": 4.9,
+    "specs": "Diameter: 12 inches, Pack of 6, Premium polished border, Scratch-resistant"
+  },
+  {
+    "id": "9",
+    "name": "Stainless Steel Sauce Pan (With Lid)",
+    "description": "Professional quality deep saucepan, ideal for boiling milk, preparing tea, making soup, and simmering sauces. Crafted with a thick bottom and sturdy riveted handle.",
+    "price": "₹499",
+    "category": "Cookware",
+    "image": "/images/milk_pot_1783604817454.jpg",
+    "rating": 4.8,
+    "specs": "Capacity: 1.5 Litres, Heat-resistant handles, Induction bottom compatible"
+  },
+  {
+    "id": "10",
+    "name": "Stainless Steel Water Jug",
+    "description": "Exquisitely designed water server featuring a curved welded handle, anti-drip pouring spout, and an immaculate mirror-finish exterior. Suitable for home dining and commercial hotels.",
+    "price": "₹499",
+    "category": "Dining & Serving",
+    "image": "/images/water_jug_1783605591131.jpg",
+    "rating": 4.9,
+    "specs": "Capacity: 1.5 Litres, Anti-rust food-grade, Curved pour control snout"
+  },
+  {
+    "id": "11",
+    "name": "Stainless Steel Kitchen Storage Container Set",
+    "description": "Airtight modular storage boxes designed to keep grains, spices, flour, and snacks crisp and fresh. Built with transparent acrylic window slots to easily view content volume.",
+    "price": "₹549",
+    "category": "Lunch & Storage",
+    "image": "/images/steel_boxes_1783605604566.jpg",
+    "rating": 4.7,
+    "specs": "Set of 3, Airtight locking seals, Visual transparent content window"
+  },
+  {
+    "id": "12",
+    "name": "Premium Stainless Steel Spoon Set",
+    "description": "Exquisite dining spoons featuring mirror-finish polish and highly comfortable ergonomic styling. High-grade steel prevents bending or tarnishing.",
+    "price": "₹299",
+    "category": "Kitchen Utensils",
+    "image": "/images/spoon_1783604685387.jpg",
+    "rating": 4.8,
+    "specs": "Set of 6 spoons, Thickness: 2mm, Heavy-gauge food-grade 304 steel"
+  },
+  {
+    "id": "13",
+    "name": "Stainless Steel Lunch Box",
+    "description": "Durable, eco-friendly stainless steel lunch container designed with tight snap clamps and a sleek layout. Extremely hygienic and non-toxic for kids and adults.",
+    "price": "₹399",
+    "category": "Lunch & Storage",
+    "image": "/images/tiffin_1783603479978.jpg",
+    "rating": 4.6,
+    "specs": "Single Tier large size, Leak-resistant, BPA-Free safe steel"
+  },
+  {
+    "id": "14",
+    "name": "Stainless Steel Tea Cup Set",
+    "description": "Elegant double-walled steel tea cups that keep your beverages piping hot while remaining perfectly cool to the touch on the outside. Sophisticated mirror finish design.",
+    "price": "₹349",
+    "category": "Kitchen Utensils",
+    "image": "/images/glass_1783603466189.jpg",
+    "rating": 4.7,
+    "specs": "Set of 6 cups, Capacity: 150ml each, Double-walled thermal protection"
+  },
+  {
+    "id": "15",
+    "name": "Premium Stainless Steel Kitchen Rack",
+    "description": "Multi-tier robust wall-mountable or counter-top kitchen shelf organizer, designed to dry and hold plates, bowls, cups, and spoons. Extremely sturdy and space saving.",
+    "price": "₹1,499",
+    "category": "Kitchen Essentials",
+    "image": "/images/steel_kitchen_rack_1783747938411.jpg",
+    "rating": 4.9,
+    "specs": "3-tier heavy-duty modular rack, Rust-proof coating, Load capacity: 25kg"
+  },
+  {
+    "id": "16",
+    "name": "Premium Stainless Steel Dinner Set (24-Piece)",
+    "description": "Complete elegant matching dinner set containing dinner plates, bowls, tumblers, and spoons.",
+    "price": "₹2,499",
+    "category": "Dining & Serving",
+    "image": "/images/dinner_set_1783603542763.jpg",
+    "rating": 4.9,
+    "specs": "24-piece full family dining set, Premium polish"
+  },
+  {
+    "id": "17",
+    "name": "Heavy-Duty Kadai (With Glass Lid)",
+    "description": "Bespoke professional cookware wok with double riveted helper handles and custom-fit tempered safety glass steam-vent lid.",
+    "price": "₹1,499",
+    "category": "Cookware",
+    "image": "/images/stainless_steel_kadai_1783664165512.jpg",
+    "rating": 4.9,
+    "specs": "Diameter: 26cm, Capacity: 3.2L, Thick sandwich base"
+  },
+  {
+    "id": "18",
+    "name": "Stainless Steel Colander & Strainer",
+    "description": "Robust deep colander with standard micro-perforated water draining holes, flat stable base, and convenient dual side grips.",
+    "price": "₹299",
+    "category": "Kitchen Utensils",
+    "image": "/images/colander_1783604857618.jpg",
+    "rating": 4.6,
+    "specs": "Diameter: 22cm, Perforated drainage loops, Smooth-rolled rim"
+  }
+]
