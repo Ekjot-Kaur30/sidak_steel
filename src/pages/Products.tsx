@@ -10,7 +10,7 @@ const categories = [
     icon: "🥣",
     items: [
       { name: "Stainless Steel Lota", image: "../images/stainless_steel_lota.webp" },
-      { name: "Stainless Steel Glass", image: "/images/stainless_steel_lota.webp" },
+      { name: "Stainless Steel Glass", image: "/images/steel_glass.jpg" },
       { name: "Stainless Steel Bowl (Katori)", image: "/images/katori_1783603516071.jpg" },
       { name: "Stainless Steel Plate (Thali)", image: "/images/dinner_set_1783603542763.jpg" },
       { name: "Stainless Steel Spoon", image: "/images/spoon_1783604685387.jpg" },
