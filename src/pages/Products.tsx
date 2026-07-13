@@ -89,9 +89,9 @@ const categories = [
     items: [
       { name: "Tea Glass", image: "/images/glass_1783603466189.jpg" },
       { name: "Coffee Mug", image: "/images/glass_1783603466189.jpg" },
-      { name: "Steel Cup", image: "/images/glass_1783603466189.jpg" },
+      { name: "Steel Cup", image: "/images/cup.jpg" },
       { name: "Steel Flask", image: "/images/water_bottle_1783604216273.jpg" },
-      { name: "Steel Kettle", image: "/images/stainless_steel_kettle_1783664186975.jpg" },
+      { name: "Steel Kettle", image: "/images/tea.jpg" },
       { name: "Steel Teapot", image: "/images/kettle_1783604936789.jpg" }
     ]
   },

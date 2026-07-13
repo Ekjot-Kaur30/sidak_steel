@@ -36,7 +36,7 @@ const whyChooseFeatures = [
     icon: Handshake,
     shortDesc: 'Decades of manufacturing integrity, trusted nationwide.',
     longDesc: 'Since 2017, we have worked with major distributors, institutional clients, and hoteliers across the nation. We adhere to food-grade materials certifications and maintain complete transparency in our billing, pricing, and steel grade reporting.',
-    images: ['/images/hotel_utensils_1783604950553.jpg', '/images/warehouse_utensils_1783747891622.jpg']
+    images: ['/images/hotel_utensils_1783604950553.jpg', '/images/warehouse.jpg']
   },
   {
     title: 'Fast Delivery',
@@ -261,14 +261,14 @@ export default function Home() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/tiffin_1783603479978.jpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
-              { name: 'Stainless Steel Pressure Cooker', image: '/images/pressure_cooker_1783603530362.jpg', desc: 'Heavy induction-compatible safety cooker' },
+              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/tiffin.jpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
+              { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg', desc: 'Heavy induction-compatible safety cooker' },
               { name: 'Airtight Spice Box (Masala Dabba)', image: '/images/masala_dabba_1783604804974.jpg', desc: 'Traditional 7-compartment kitchen organizer' },
-              { name: 'Heavy-Duty Stainless Steel Kadai', image: '/images/stainless_steel_kadai_1783664165512.jpg', desc: 'Double riveted high-capacity helper wok' },
-              { name: 'Modern Whistling Tea Kettle', image: '/images/stainless_steel_kettle_1783664186975.jpg', desc: 'Flat capsule fast-boiling aesthetic kettle' },
+              { name: 'Heavy-Duty Stainless Steel Kadai', image: '/images/kadai.jpg', desc: 'Double riveted high-capacity helper wok' },
+              { name: 'Modern Whistling Tea Kettle', image: '/images/tea.jpg', desc: 'Flat capsule fast-boiling aesthetic kettle' },
               { name: 'Airtight Steel Canister Storage Set', image: '/images/food_storage_1783604778508.jpg', desc: 'Preserves culinary ingredients fresh and dry' },
-              { name: 'Stainless Steel Colander & Strainer', image: '/images/colander_1783604857618.jpg', desc: 'Deep perforated wash-drain basket' },
-              { name: 'Premium Stainless Steel Kitchen Rack', image: '/images/steel_kitchen_rack_1783747938411.jpg', desc: 'Sturdy multi-tier space-saving organizer rack' }
+              { name: 'Stainless Steel Colander & Strainer', image: '/images/colander.jpg', desc: 'Deep perforated wash-drain basket' },
+              { name: 'Premium Stainless Steel Kitchen Rack', image: '/images/rack.jpg', desc: 'Sturdy multi-tier space-saving organizer rack' }
             ].map((item, index) => (
               <div 
                 key={index} 
