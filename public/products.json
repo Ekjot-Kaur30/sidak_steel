@@ -135,7 +135,7 @@
     "description": "Elegant double-walled steel tea cups that keep your beverages piping hot while remaining perfectly cool to the touch on the outside. Sophisticated mirror finish design.",
     "price": "₹349",
     "category": "Kitchen Utensils",
-    "image": "/images/glass_1783603466189.jpg",
+    "image": "/images/cup.jpg",
     "rating": 4.7,
     "specs": "Set of 6 cups, Capacity: 150ml each, Double-walled thermal protection"
   },
@@ -145,7 +145,7 @@
     "description": "Multi-tier robust wall-mountable or counter-top kitchen shelf organizer, designed to dry and hold plates, bowls, cups, and spoons. Extremely sturdy and space saving.",
     "price": "₹1,499",
     "category": "Kitchen Essentials",
-    "image": "/images/steel_kitchen_rack_1783747938411.jpg",
+    "image": "/images/rack.jpg",
     "rating": 4.9,
     "specs": "3-tier heavy-duty modular rack, Rust-proof coating, Load capacity: 25kg"
   },
@@ -155,7 +155,7 @@
     "description": "Complete elegant matching dinner set containing dinner plates, bowls, tumblers, and spoons.",
     "price": "₹2,499",
     "category": "Dining & Serving",
-    "image": "/images/dinner_set_1783603542763.jpg",
+    "image": "/images/dinner.jpg",
     "rating": 4.9,
     "specs": "24-piece full family dining set, Premium polish"
   },
@@ -165,7 +165,7 @@
     "description": "Bespoke professional cookware wok with double riveted helper handles and custom-fit tempered safety glass steam-vent lid.",
     "price": "₹1,499",
     "category": "Cookware",
-    "image": "/images/stainless_steel_kadai_1783664165512.jpg",
+    "image": "/images/kadai.jpg",
     "rating": 4.9,
     "specs": "Diameter: 26cm, Capacity: 3.2L, Thick sandwich base"
   },
@@ -175,7 +175,7 @@
     "description": "Robust deep colander with standard micro-perforated water draining holes, flat stable base, and convenient dual side grips.",
     "price": "₹299",
     "category": "Kitchen Utensils",
-    "image": "/images/colander_1783604857618.jpg",
+    "image": "/images/colander.jpg",
     "rating": 4.6,
     "specs": "Diameter: 22cm, Perforated drainage loops, Smooth-rolled rim"
   }
