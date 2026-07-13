@@ -43,7 +43,7 @@ export default function LogoDetail() {
           {/* Circular Frame Container */}
           <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-inner border-4 border-white relative">
             <img
-              src="/images/royal_steel_logo_1783663320363.jpg"
+              src="/images/sidak_steel_logo_1783862511965.jpg"
               alt="Sidak Steel Royal Emblem"
               className="w-full h-full object-cover rounded-full"
               referrerPolicy="no-referrer"

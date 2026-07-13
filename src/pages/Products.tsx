@@ -57,7 +57,7 @@ const categories = [
     icon: "🍽",
     items: [
       { name: "Stainless Steel Tray", image: "/images/tray_1783603506131.jpg" },
-      { name: "Stainless Steel Dinner Set", image: "/images/dinner_set_1783603542763.jpg" },
+      { name: "Stainless Steel Dinner Set", image: "/images/dinner.jpg" },
       { name: "Serving Bowl", image: "/images/katori_1783603516071.jpg" },
       { name: "Rice Plate", image: "/images/dinner_set_1783603542763.jpg" },
       { name: "Compartment Plate", image: "/images/compartment_plate_1783604842965.jpg" },
@@ -114,7 +114,7 @@ const featuredProducts = [
   {
     name: "Stainless Steel Lota",
     description: "Perfect for daily household use, made from premium food-grade stainless steel with a polished finish.",
-    image: "/images/stainless_steel_lota.jpg"
+    image: "/images/stainless_steel_lota.webp"
   },
   {
     name: "Stainless Steel Glass",

@@ -22,7 +22,7 @@ const whyChooseFeatures = [
     icon: Banknote,
     shortDesc: 'Wholesale-competitive rates without compromise on grade.',
     longDesc: 'We believe that premium quality shouldn’t come with a premium price tag. By optimizing our manufacturing processes and offering direct wholesale prices, Sidak Steel ensures that both individual households and commercial restaurants can access top-tier kitchenware without breaking the bank.',
-    images: ['/images/bowl.jpg', '/images/canaster.jpg']
+    images: ['/images/bowl.jpg', '/images/masala.jpg']
   },
   {
     title: 'Bulk Orders',
