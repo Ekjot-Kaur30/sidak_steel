@@ -114,42 +114,42 @@ const featuredProducts = [
   {
     name: "Stainless Steel Lota",
     description: "Perfect for daily household use, made from premium food-grade stainless steel with a polished finish.",
-    image: "/images/lota_1783603449089.jpg"
+    image: "/images/stainless_steel_lota.jpg"
   },
   {
     name: "Stainless Steel Glass",
     description: "Rust-resistant drinking glass available in multiple sizes for everyday use.",
-    image: "/images/glass_1783603466189.jpg"
+    image: "/images/glass.jpg"
   },
   {
     name: "Stainless Steel Tiffin Box",
     description: "Leak-resistant, durable lunch box ideal for school, office, and travel.",
-    image: "/images/tiffin_1783603479978.jpg"
+    image: "/images/images.jpg"
   },
   {
     name: "Stainless Steel Fry Pan",
     description: "Heavy-duty fry pan with an ergonomic handle for convenient cooking.",
-    image: "/images/fry_pan_1783603493034.jpg"
+    image: "/images/fry pan.jpg"
   },
   {
     name: "Stainless Steel Tray",
     description: "Elegant serving tray suitable for homes, hotels, and restaurants.",
-    image: "/images/tray_1783603506131.jpg"
+    image: "/images/tray.jpg"
   },
   {
     name: "Stainless Steel Bowl (Katori)",
     description: "Available in different sizes, ideal for serving vegetables, curries, desserts, and snacks.",
-    image: "/images/katori_1783603516071.jpg"
+    image: "/images/bowl.jpg"
   },
   {
     name: "Stainless Steel Pressure Cooker",
     description: "Strong and reliable pressure cooker compatible with gas and induction cooktops.",
-    image: "/images/pressure_cooker_1783603530362.jpg"
+    image: "/images/cooker.jpg"
   },
   {
     name: "Stainless Steel Dinner Set",
     description: "Complete dinner set including plates, bowls, glasses, and spoons for family dining.",
-    image: "/images/dinner_set_1783603542763.jpg"
+    image: "/images/dinner.jpg"
   }
 ];
 
