@@ -90,7 +90,7 @@ export default function Home() {
                   title="View Royal Crest Logo"
                 >
                   <img 
-                    src="/images/royal_steel_logo_1783663320363.jpg" 
+                    src="/images/sidak_steel_logo_1783862511965.jpg" 
                     alt="Sidak Steel Royal Crest" 
                     className="w-16 h-16 rounded-full object-cover"
                     referrerPolicy="no-referrer"
@@ -132,7 +132,7 @@ export default function Home() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-md aspect-square bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-3xl overflow-hidden group border border-slate-200/40 p-4 flex items-center justify-center">
                 <img 
-                  src="/images/hero_utensils_collection_1783747873377.jpg" 
+                  src="/images/hero.jpg" 
                   alt="Sidak Steel premium stainless steel utensils collection including pots, pans, bowls, plates, and canisters with clean bright white studio background" 
                   className="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
@@ -223,12 +223,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             {[
-              { name: 'Stainless Steel Dinner Set', image: '/images/dinner_set_1783603542763.jpg' },
-              { name: 'Stainless Steel Lota', image: '/images/lota_1783603449089.jpg' },
-              { name: 'Stainless Steel Tiffin Box', image: '/images/tiffin_1783603479978.jpg' },
-              { name: 'Stainless Steel Pressure Cooker', image: '/images/pressure_cooker_1783603530362.jpg' },
-              { name: 'Stainless Steel Tray', image: '/images/tray_1783603506131.jpg' },
-              { name: 'Stainless Steel Bowl (Katori)', image: '/images/katori_1783603516071.jpg' }
+              { name: 'Stainless Steel Dinner Set', image: '/images/dinner set.jpg' },
+              { name: 'Stainless Steel Lota', image: '/images/stainless_steel_lota9.jpg' },
+              { name: 'Stainless Steel Tiffin Box', image: '/images/lunch.jpg' },
+              { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg' },
+              { name: 'Stainless Steel Tray', image: '/images/tray.jpg' },
+              { name: 'Stainless Steel Bowl (Katori)', image: '/images/bowl.jpg' }
             ].map((product, index) => (
               <Link to="/products" key={index} className="glass p-6 rounded-3xl text-center hover:bg-white/50 hover:scale-105 active:scale-95 transition-all cursor-pointer group block h-full">
                 <div className="w-full aspect-square bg-white/40 shadow-[inset_0_0_20px_rgba(0,0,0,0.05)] rounded-2xl mb-4 flex items-center justify-center group-hover:bg-white/60 transition-colors overflow-hidden">
