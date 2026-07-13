@@ -15,14 +15,14 @@ const whyChooseFeatures = [
     icon: ShieldCheck,
     shortDesc: 'Heavy-gauge designs engineered to withstand rugged daily use.',
     longDesc: 'Built with heavy-gauge industrial standards, our utensils offer remarkable dent resistance and structure preservation. From commercial cooking pots to residential pressure cookers, we guarantee durability that stands the test of time.',
-    images: ['/images/kadai.jpg', '/images/bowl.jpg']
+    images: ['/images/kadai.jpg', '/images/masala.jpg']
   },
   {
     title: 'Affordable Prices',
     icon: Banknote,
     shortDesc: 'Wholesale-competitive rates without compromise on grade.',
     longDesc: 'We believe that premium quality shouldn’t come with a premium price tag. By optimizing our manufacturing processes and offering direct wholesale prices, Sidak Steel ensures that both individual households and commercial restaurants can access top-tier kitchenware without breaking the bank.',
-    images: ['/images/bowl.jpg', '/images/glass.jpg']
+    images: ['/images/bowl.jpg', '/images/canaster.jpg']
   },
   {
     title: 'Bulk Orders',
@@ -223,8 +223,8 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             {[
-              { name: 'Stainless Steel Dinner Set', image: '/images/dinner set.jpg' },
-              { name: 'Stainless Steel Lota', image: '/images/stainless_steel_lota9.jpg' },
+              { name: 'Stainless Steel Dinner Set', image: '/images/dinner.jpg' },
+              { name: 'Stainless Steel Lota', image: '/images/stainless_steel_lota.jpg' },
               { name: 'Stainless Steel Tiffin Box', image: '/images/lunch.jpg' },
               { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg' },
               { name: 'Stainless Steel Tray', image: '/images/tray.jpg' },
@@ -261,12 +261,12 @@ export default function Home() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/tiffin.jpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
+              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/premiumjpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
               { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg', desc: 'Heavy induction-compatible safety cooker' },
-              { name: 'Airtight Spice Box (Masala Dabba)', image: '/images/masala_dabba_1783604804974.jpg', desc: 'Traditional 7-compartment kitchen organizer' },
+              { name: 'Airtight Spice Box (Masala Dabba)', image: '/images/masala.jpg', desc: 'Traditional 7-compartment kitchen organizer' },
               { name: 'Heavy-Duty Stainless Steel Kadai', image: '/images/kadai.jpg', desc: 'Double riveted high-capacity helper wok' },
               { name: 'Modern Whistling Tea Kettle', image: '/images/tea.jpg', desc: 'Flat capsule fast-boiling aesthetic kettle' },
-              { name: 'Airtight Steel Canister Storage Set', image: '/images/food_storage_1783604778508.jpg', desc: 'Preserves culinary ingredients fresh and dry' },
+              { name: 'Airtight Steel Canister Storage Set', image: '/images/canaster.jpg', desc: 'Preserves culinary ingredients fresh and dry' },
               { name: 'Stainless Steel Colander & Strainer', image: '/images/colander.jpg', desc: 'Deep perforated wash-drain basket' },
               { name: 'Premium Stainless Steel Kitchen Rack', image: '/images/rack.jpg', desc: 'Sturdy multi-tier space-saving organizer rack' }
             ].map((item, index) => (
