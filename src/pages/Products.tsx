@@ -9,8 +9,8 @@ const categories = [
     title: "Kitchen Utensils",
     icon: "🥣",
     items: [
-      { name: "Stainless Steel Lota", image: "/images/stainless_steel_lota.webp" },
-      { name: "Stainless Steel Glass", image: "/images/glass_1783603466189.jpg" },
+      { name: "Stainless Steel Lota", image: "../images/stainless_steel_lota.webp" },
+      { name: "Stainless Steel Glass", image: "/images/stainless_steel_lota.webp" },
       { name: "Stainless Steel Bowl (Katori)", image: "/images/katori_1783603516071.jpg" },
       { name: "Stainless Steel Plate (Thali)", image: "/images/dinner_set_1783603542763.jpg" },
       { name: "Stainless Steel Spoon", image: "/images/spoon_1783604685387.jpg" },
