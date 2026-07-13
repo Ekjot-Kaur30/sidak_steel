@@ -8,7 +8,7 @@ const whyChooseFeatures = [
     icon: Award,
     shortDesc: 'High-grade rust-resistant steel that lasts for generations.',
     longDesc: 'Our stainless steel products are manufactured using 100% food-grade material, ensuring they remain completely rust and corrosion free even after years of daily use. The elegant mirror finish not only adds a touch of luxury but makes them incredibly easy to clean and maintain.',
-    images: ['/images/dinner.jpg', '/images/cooker.jpg', '/images/stainless_steel_lota.webp']
+    images: ['/images/dinner.jpg', '/images/cooker.jpg', '/images/cup.jpg']
   },
   {
     title: 'Durable Products',
