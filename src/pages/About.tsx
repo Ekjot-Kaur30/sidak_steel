@@ -92,7 +92,7 @@ export default function About() {
             <div className="group relative bg-white border border-slate-200/40 rounded-3xl p-3 shadow-md hover:shadow-lg hover:border-indigo-500/20 hover:-translate-y-1 transition-all duration-300">
               <div className="w-full aspect-[4/3] bg-slate-50 rounded-2xl overflow-hidden relative flex items-center justify-center">
                 <img 
-                  src="/images/warehouse_utensils_1783747891622.jpg" 
+                  src="/images/warehouse.jpg" 
                   alt="Sidak Steel modern clean warehouse filled with organized boxes of stainless steel utensils" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
@@ -106,7 +106,7 @@ export default function About() {
             <div className="group relative bg-white border border-slate-200/40 rounded-3xl p-3 shadow-md hover:shadow-lg hover:border-indigo-500/20 hover:-translate-y-1 transition-all duration-300">
               <div className="w-full aspect-[4/3] bg-slate-50 rounded-2xl overflow-hidden relative flex items-center justify-center">
                 <img 
-                  src="/images/organized_shelves_1783747905769.jpg" 
+                  src="/images/shelves.jpg" 
                   alt="Organized showroom shelves displaying premium mirror-finished stainless steel pots, bowls, and canisters" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
