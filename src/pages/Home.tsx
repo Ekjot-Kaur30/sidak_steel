@@ -8,28 +8,28 @@ const whyChooseFeatures = [
     icon: Award,
     shortDesc: 'High-grade rust-resistant steel that lasts for generations.',
     longDesc: 'Our stainless steel products are manufactured using 100% food-grade material, ensuring they remain completely rust and corrosion free even after years of daily use. The elegant mirror finish not only adds a touch of luxury but makes them incredibly easy to clean and maintain.',
-    images: ['/images/dinner_set_1783603542763.jpg', '/images/pressure_cooker_1783603530362.jpg', '/images/lota_1783603449089.jpg']
+    images: ['/images/dinner.jpg', '/images/cooker.jpg', '/images/stainless_steel_lota.jpg']
   },
   {
     title: 'Durable Products',
     icon: ShieldCheck,
     shortDesc: 'Heavy-gauge designs engineered to withstand rugged daily use.',
     longDesc: 'Built with heavy-gauge industrial standards, our utensils offer remarkable dent resistance and structure preservation. From commercial cooking pots to residential pressure cookers, we guarantee durability that stands the test of time.',
-    images: ['/images/stainless_steel_kadai_1783664165512.jpg', '/images/casserole_1783604830092.jpg']
+    images: ['/images/kadai.jpg', '/images/casserole_1783604830092.jpg']
   },
   {
     title: 'Affordable Prices',
     icon: Banknote,
     shortDesc: 'Wholesale-competitive rates without compromise on grade.',
     longDesc: 'We believe that premium quality shouldn’t come with a premium price tag. By optimizing our manufacturing processes and offering direct wholesale prices, Sidak Steel ensures that both individual households and commercial restaurants can access top-tier kitchenware without breaking the bank.',
-    images: ['/images/katori_1783603516071.jpg', '/images/glass_1783603466189.jpg']
+    images: ['/images/bowl.jpg', '/images/glass.jpg']
   },
   {
     title: 'Bulk Orders',
     icon: Package,
     shortDesc: 'High-capacity supply chains ready to fulfill large commercial lots.',
     longDesc: 'Whether you are looking for airtight storage containers to keep your spices fresh, heavy-duty cookware for professional use, or elegant serving trays for guests, our factory is fully optimized for scale. We handle high-volume bulk requirements with customized logo branding support.',
-    images: ['/images/steel_boxes_1783605604566.jpg', '/images/food_storage_1783604778508.jpg']
+    images: ['/images/container.jpg', '/images/food_storage_1783604778508.jpg']
   },
   {
     title: 'Trusted Supplier',
@@ -43,7 +43,7 @@ const whyChooseFeatures = [
     icon: Truck,
     shortDesc: 'Quick and secure nationwide shipping for all bulk orders.',
     longDesc: 'We understand the importance of timely delivery, especially for commercial clients setting up a new kitchen. Our robust logistics network ensures that whether you are ordering a single dinner set or bulk items for a hotel, your products arrive safely and promptly across the nation.',
-    images: ['/images/fry_pan_1783603493034.jpg', '/images/tiffin_1783603479978.jpg']
+    images: ['/images/fry pan.jpg', '/images/lunch.jpg']
   }
 ];
 
