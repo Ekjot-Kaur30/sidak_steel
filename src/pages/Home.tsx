@@ -36,7 +36,7 @@ const whyChooseFeatures = [
     icon: Handshake,
     shortDesc: 'Decades of manufacturing integrity, trusted nationwide.',
     longDesc: 'Since 2017, we have worked with major distributors, institutional clients, and hoteliers across the nation. We adhere to food-grade materials certifications and maintain complete transparency in our billing, pricing, and steel grade reporting.',
-    images: ['/images/hotel_utensils_1783604950553.jpg', '/images/warehouse.jpg']
+    images: ['/images/sidak_steel_logo_1783862511965.jpg']
   },
   {
     title: 'Fast Delivery',
