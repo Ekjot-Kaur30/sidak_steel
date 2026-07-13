@@ -8,7 +8,7 @@ const whyChooseFeatures = [
     icon: Award,
     shortDesc: 'High-grade rust-resistant steel that lasts for generations.',
     longDesc: 'Our stainless steel products are manufactured using 100% food-grade material, ensuring they remain completely rust and corrosion free even after years of daily use. The elegant mirror finish not only adds a touch of luxury but makes them incredibly easy to clean and maintain.',
-    images: ['/images/dinner.jpg', '/images/cooker.jpg', '/images/stainless_steel_lota.jpg']
+    images: ['/images/dinner.jpg', '/images/cooker.jpg', '/images/stainless_steel_lota.webp']
   },
   {
     title: 'Durable Products',
@@ -224,7 +224,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             {[
               { name: 'Stainless Steel Dinner Set', image: '/images/dinner.jpg' },
-              { name: 'Stainless Steel Lota', image: '/images/stainless_steel_lota.jpg' },
+              { name: 'Stainless Steel Lota', image: '/images/stainless_steel_lota.webp' },
               { name: 'Stainless Steel Tiffin Box', image: '/images/lunch.jpg' },
               { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg' },
               { name: 'Stainless Steel Tray', image: '/images/tray.jpg' },

@@ -150,7 +150,7 @@ export default function Contact() {
               <div className="group relative bg-white border border-slate-200/40 rounded-3xl p-3 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div className="w-full aspect-[16/10] bg-slate-50 rounded-2xl overflow-hidden relative flex items-center justify-center">
                   <img 
-                    src="/images/storefront_warehouse_1783747919229.jpg" 
+                    src="/images/warehouse.jpg" 
                     alt="Sidak Steel storefront and logistics warehouse center displaying stainless steel utensils products" 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
