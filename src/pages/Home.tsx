@@ -261,7 +261,7 @@ export default function Home() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/premiumjpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
+              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/premium.jpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
               { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg', desc: 'Heavy induction-compatible safety cooker' },
               { name: 'Airtight Spice Box (Masala Dabba)', image: '/images/masala.jpg', desc: 'Traditional 7-compartment kitchen organizer' },
               { name: 'Heavy-Duty Stainless Steel Kadai', image: '/images/kadai.jpg', desc: 'Double riveted high-capacity helper wok' },
