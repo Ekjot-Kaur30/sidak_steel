@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <Link to="/logo" className="hover:scale-110 transition-all cursor-pointer" title="View Royal Crest Logo">
                 <img 
-                  src="/images/royal_steel_logo_1783663320363.jpg" 
+                  src="/images/sidak_steel_logo_1783604723395.jpg" 
                   alt="Sidak Steel Royal Logo" 
                   className="w-9 h-9 rounded-full object-cover border border-slate-200/50 shadow-sm"
                   referrerPolicy="no-referrer"
