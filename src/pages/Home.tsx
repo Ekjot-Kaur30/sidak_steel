@@ -15,7 +15,7 @@ const whyChooseFeatures = [
     icon: ShieldCheck,
     shortDesc: 'Heavy-gauge designs engineered to withstand rugged daily use.',
     longDesc: 'Built with heavy-gauge industrial standards, our utensils offer remarkable dent resistance and structure preservation. From commercial cooking pots to residential pressure cookers, we guarantee durability that stands the test of time.',
-    images: ['/images/kadai.jpg', '/images/casserole_1783604830092.jpg']
+    images: ['/images/kadai.jpg', '/images/bowl.jpg']
   },
   {
     title: 'Affordable Prices',
@@ -29,14 +29,14 @@ const whyChooseFeatures = [
     icon: Package,
     shortDesc: 'High-capacity supply chains ready to fulfill large commercial lots.',
     longDesc: 'Whether you are looking for airtight storage containers to keep your spices fresh, heavy-duty cookware for professional use, or elegant serving trays for guests, our factory is fully optimized for scale. We handle high-volume bulk requirements with customized logo branding support.',
-    images: ['/images/container.jpg', '/images/food_storage_1783604778508.jpg']
+    images: ['/images/container.jpg', '/images/jug.jpg']
   },
   {
     title: 'Trusted Supplier',
     icon: Handshake,
     shortDesc: 'Decades of manufacturing integrity, trusted nationwide.',
     longDesc: 'Since 2017, we have worked with major distributors, institutional clients, and hoteliers across the nation. We adhere to food-grade materials certifications and maintain complete transparency in our billing, pricing, and steel grade reporting.',
-    images: ['/images/sidak_steel_logo_1783862511965.jpg']
+    images: ['/images/sidak_steel_logo_1783862511965.jpg', '/images/tea.jpg']
   },
   {
     title: 'Fast Delivery',
