@@ -291,7 +291,7 @@ export default function Orders() {
             </form>
 
             <div className="mt-8 pt-6 border-t border-slate-200/50 text-[11px] text-slate-400 font-bold">
-              Default local test passcode is <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-mono text-xs">admin</code>
+              Passcode can be securely updated in AI Studio Settings using <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-mono text-xs">ADMIN_PASSWORD</code>
             </div>
           </div>
         </motion.div>
