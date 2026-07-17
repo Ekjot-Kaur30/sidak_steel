@@ -1,0 +1,49 @@
+{
+  "collections": {
+    "orders": {
+      "description": "Stores placed bulk orders and quotations from users",
+      "fields": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the order"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the customer"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the customer"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number of the customer"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject or specific item ordered"
+        },
+        "message": {
+          "type": "string",
+          "description": "Custom requirements and details"
+        },
+        "productName": {
+          "type": "string",
+          "description": "The name of the utensil product ordered, if from detail page"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Requested bulk quantity"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp of order placement"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current fulfillment status of order (e.g. pending, processed, shipped)"
+        }
+      }
+    }
+  }
+}

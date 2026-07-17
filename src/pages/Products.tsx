@@ -9,8 +9,8 @@ const categories = [
     title: "Kitchen Utensils",
     icon: "🥣",
     items: [
-      { name: "Stainless Steel Lota", image: "../images/stainless_steel_lota.webp" },
-      { name: "Stainless Steel Glass", image: "/images/steel_glass.jpg" },
+      { name: "Stainless Steel Lota", image: "/images/lota_1783603449089.jpg" },
+      { name: "Stainless Steel Glass", image: "/images/glass_1783603466189.jpg" },
       { name: "Stainless Steel Bowl (Katori)", image: "/images/katori_1783603516071.jpg" },
       { name: "Stainless Steel Plate (Thali)", image: "/images/dinner_set_1783603542763.jpg" },
       { name: "Stainless Steel Spoon", image: "/images/spoon_1783604685387.jpg" },
@@ -57,7 +57,7 @@ const categories = [
     icon: "🍽",
     items: [
       { name: "Stainless Steel Tray", image: "/images/tray_1783603506131.jpg" },
-      { name: "Stainless Steel Dinner Set", image: "/images/dinner.jpg" },
+      { name: "Stainless Steel Dinner Set", image: "/images/dinner_set_1783603542763.jpg" },
       { name: "Serving Bowl", image: "/images/katori_1783603516071.jpg" },
       { name: "Rice Plate", image: "/images/dinner_set_1783603542763.jpg" },
       { name: "Compartment Plate", image: "/images/compartment_plate_1783604842965.jpg" },
@@ -89,9 +89,9 @@ const categories = [
     items: [
       { name: "Tea Glass", image: "/images/glass_1783603466189.jpg" },
       { name: "Coffee Mug", image: "/images/glass_1783603466189.jpg" },
-      { name: "Steel Cup", image: "/images/cup.jpg" },
+      { name: "Steel Cup", image: "/images/glass_1783603466189.jpg" },
       { name: "Steel Flask", image: "/images/water_bottle_1783604216273.jpg" },
-      { name: "Steel Kettle", image: "/images/tea.jpg" },
+      { name: "Steel Kettle", image: "/images/stainless_steel_kettle_1783664186975.jpg" },
       { name: "Steel Teapot", image: "/images/kettle_1783604936789.jpg" }
     ]
   },
@@ -114,42 +114,42 @@ const featuredProducts = [
   {
     name: "Stainless Steel Lota",
     description: "Perfect for daily household use, made from premium food-grade stainless steel with a polished finish.",
-    image: "/images/stainless_steel_lota.webp"
+    image: "/images/lota_1783603449089.jpg"
   },
   {
     name: "Stainless Steel Glass",
     description: "Rust-resistant drinking glass available in multiple sizes for everyday use.",
-    image: "/images/glass.jpg"
+    image: "/images/glass_1783603466189.jpg"
   },
   {
     name: "Stainless Steel Tiffin Box",
     description: "Leak-resistant, durable lunch box ideal for school, office, and travel.",
-    image: "/images/images.jpg"
+    image: "/images/tiffin_1783603479978.jpg"
   },
   {
     name: "Stainless Steel Fry Pan",
     description: "Heavy-duty fry pan with an ergonomic handle for convenient cooking.",
-    image: "/images/fry pan.jpg"
+    image: "/images/fry_pan_1783603493034.jpg"
   },
   {
     name: "Stainless Steel Tray",
     description: "Elegant serving tray suitable for homes, hotels, and restaurants.",
-    image: "/images/tray.jpg"
+    image: "/images/tray_1783603506131.jpg"
   },
   {
     name: "Stainless Steel Bowl (Katori)",
     description: "Available in different sizes, ideal for serving vegetables, curries, desserts, and snacks.",
-    image: "/images/bowl.jpg"
+    image: "/images/katori_1783603516071.jpg"
   },
   {
     name: "Stainless Steel Pressure Cooker",
     description: "Strong and reliable pressure cooker compatible with gas and induction cooktops.",
-    image: "/images/cooker.jpg"
+    image: "/images/pressure_cooker_1783603530362.jpg"
   },
   {
     name: "Stainless Steel Dinner Set",
     description: "Complete dinner set including plates, bowls, glasses, and spoons for family dining.",
-    image: "/images/dinner.jpg"
+    image: "/images/dinner_set_1783603542763.jpg"
   }
 ];
 

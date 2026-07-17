@@ -16,6 +16,7 @@ const Products = lazy(() => import('./pages/Products'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
 const LogoDetail = lazy(() => import('./pages/LogoDetail'));
+const Orders = lazy(() => import('./pages/Orders'));
 
 // Loading spinner fallback for Suspense
 function PageLoader() {
@@ -42,6 +43,7 @@ export default function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/logo" element={<LogoDetail />} />
+              <Route path="/orders" element={<Orders />} />
             </Routes>
           </Suspense>
         </main>

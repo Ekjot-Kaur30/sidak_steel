@@ -12,6 +12,7 @@ export default function Header() {
     { name: 'Products', path: '/products' },
     { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Orders', path: '/orders' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

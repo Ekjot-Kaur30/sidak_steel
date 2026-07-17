@@ -693,6 +693,8 @@ export default function ProductCatalog({ onInquireClick }: ProductCatalogProps =
                             state: {
                               subject: `Bulk Query for ${selectedProduct.name}`,
                               message: `Hello Sidak Steel Team,\n\nI am interested in a bulk wholesale purchase of around ${bulkQuantity} units of "${selectedProduct.name}". Please share the quotation, lead times, and dispatch schedule.\n\nThank you!`,
+                              productName: selectedProduct.name,
+                              quantity: bulkQuantity,
                             },
                           });
                         }

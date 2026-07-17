@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Orders collection: Anyone can create an order, but let's allow read/write for testing.
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+  }
+}

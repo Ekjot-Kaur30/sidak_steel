@@ -1,22 +1,32 @@
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, CloudLightning, Database } from 'lucide-react';
 import { FormEvent, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import FAQ from '../components/FAQ';
+import { saveOrder, isFirebaseActive } from '../lib/firebase';
 
 export default function Contact() {
   const location = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedId, setSubmittedId] = useState('');
+  const [savedLocally, setSavedLocally] = useState(false);
   
-  // Controlled fields for pre-population
+  // Controlled fields for form
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [productName, setProductName] = useState('');
+  const [quantity, setQuantity] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     // If navigating from product catalog details with a custom inquiry
     if (location.state) {
       if (location.state.subject) setSubject(location.state.subject);
       if (location.state.message) setMessage(location.state.message);
+      if (location.state.productName) setProductName(location.state.productName);
+      if (location.state.quantity) setQuantity(location.state.quantity);
     }
   }, [location.state]);
 
@@ -56,14 +66,36 @@ export default function Contact() {
     };
   }, []);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const result = await saveOrder({
+        name,
+        email,
+        phone,
+        subject,
+        message,
+        productName: productName || undefined,
+        quantity: quantity || undefined,
+      });
+      setSubmittedId(result.id);
+      setSavedLocally(result.isLocal);
       setIsSubmitted(true);
-    }, 1000);
+      
+      // Reset form
+      setName('');
+      setEmail('');
+      setPhone('');
+      setSubject('');
+      setMessage('');
+      setProductName('');
+      setQuantity(undefined);
+    } catch (err) {
+      console.error("Error submitting order: ", err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -150,7 +182,7 @@ export default function Contact() {
               <div className="group relative bg-white border border-slate-200/40 rounded-3xl p-3 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div className="w-full aspect-[16/10] bg-slate-50 rounded-2xl overflow-hidden relative flex items-center justify-center">
                   <img 
-                    src="/images/warehouse.jpg" 
+                    src="/images/storefront_warehouse_1783747919229.jpg" 
                     alt="Sidak Steel storefront and logistics warehouse center displaying stainless steel utensils products" 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
@@ -165,20 +197,50 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="p-10 lg:p-12">
             {isSubmitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12">
-                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <div className="h-full flex flex-col items-center justify-center text-center space-y-5 py-12">
+                <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shadow-md animate-bounce">
+                  <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900">Message Sent!</h2>
-                <p className="text-slate-600">Thank you for reaching out. We will get back to you shortly.</p>
-                <button 
-                  onClick={() => setIsSubmitted(false)}
-                  className="mt-4 px-6 py-2 border border-slate-300 rounded-xl font-bold text-slate-700 hover:bg-white/50 hover:scale-105 active:scale-95 transition-all"
-                >
-                  Send another message
-                </button>
+                <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Order Received!</h2>
+                
+                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 max-w-md w-full space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-500 font-medium">Order / Query ID:</span>
+                    <span className="font-mono font-bold text-slate-800 bg-slate-200 px-2.5 py-0.5 rounded-md text-xs">{submittedId}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-slate-500 font-medium">Database Status:</span>
+                    {savedLocally ? (
+                      <span className="inline-flex items-center gap-1 text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full font-bold text-xs">
+                        <Database className="w-3.5 h-3.5" /> Local Database Active
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full font-bold text-xs">
+                        <CloudLightning className="w-3.5 h-3.5" /> Live Firebase Firestore
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-slate-500 leading-normal pt-2 border-t border-slate-200">
+                    Your request has been successfully recorded. You can view, track, and manage this and all other requests on our interactive <span className="font-semibold text-slate-900">Orders Dashboard</span>!
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md justify-center">
+                  <a
+                    href="/orders"
+                    className="px-6 py-3 bg-slate-950 hover:bg-slate-800 text-white rounded-xl font-bold transition-all text-sm active:scale-95 shadow-md flex items-center justify-center gap-2"
+                  >
+                    View Orders Dashboard
+                  </a>
+                  <button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="px-6 py-3 border border-slate-300 rounded-xl font-bold text-slate-700 bg-white hover:bg-slate-50 active:scale-95 transition-all text-sm shadow-sm"
+                  >
+                    Place Another Order
+                  </button>
+                </div>
               </div>
             ) : (
               <>
@@ -187,6 +249,22 @@ export default function Contact() {
                     Are you an established <span className="text-slate-900 font-bold">kitchenware wholesaler</span>? Simply fill out the form below to directly <span className="text-slate-900 font-bold">contact steel utensils supplier</span> representatives and request wholesale pricing.
                   </p>
                 </div>
+
+                {/* Specific Product Order Badge */}
+                {productName && (
+                  <div className="mb-6 p-4 rounded-2xl bg-slate-900 text-white border border-slate-800 shadow-sm flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] text-indigo-300 font-bold uppercase tracking-wider block">Selected Item for Bulk Quotation</span>
+                      <span className="text-base font-bold text-white block">{productName}</span>
+                    </div>
+                    {quantity && (
+                      <span className="bg-white/20 px-3 py-1.5 rounded-lg text-xs font-black">
+                        {quantity} units
+                      </span>
+                    )}
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-bold text-slate-800 mb-1">Full Name</label>
@@ -194,6 +272,8 @@ export default function Contact() {
                       type="text"
                       id="name"
                       required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl bg-white/40 border border-white/40 focus:ring-2 focus:ring-slate-900 focus:bg-white/60 focus:border-slate-900 outline-none transition-all placeholder-slate-500 font-medium"
                       placeholder="John Doe"
                     />
@@ -206,6 +286,8 @@ export default function Contact() {
                         type="email"
                         id="email"
                         required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full px-4 py-3 rounded-xl bg-white/40 border border-white/40 focus:ring-2 focus:ring-slate-900 focus:bg-white/60 focus:border-slate-900 outline-none transition-all placeholder-slate-500 font-medium"
                         placeholder="john@example.com"
                       />
@@ -215,6 +297,8 @@ export default function Contact() {
                       <input
                         type="tel"
                         id="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                         className="w-full px-4 py-3 rounded-xl bg-white/40 border border-white/40 focus:ring-2 focus:ring-slate-900 focus:bg-white/60 focus:border-slate-900 outline-none transition-all placeholder-slate-500 font-medium"
                         placeholder="+91"
                       />
@@ -250,7 +334,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-md"
+                    className="w-full px-6 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-md cursor-pointer"
                   >
                     {isSubmitting ? 'Sending...' : 'Submit Message'}
                   </button>
