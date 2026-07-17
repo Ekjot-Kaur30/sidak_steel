@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getOrders, updateOrderStatus, isFirebaseActive, Order } from '../lib/firebase';
+import { getOrders, updateOrderStatus, isFirebaseActiveAsync, Order } from '../lib/firebase';
 import { 
   Database, 
   CloudLightning, 
@@ -36,7 +36,9 @@ export default function Orders() {
 
   useEffect(() => {
     document.title = "Orders Dashboard | Sidak Steel";
-    setIsFirebaseConnected(isFirebaseActive());
+    isFirebaseActiveAsync().then((connected) => {
+      setIsFirebaseConnected(connected);
+    });
     fetchOrders();
     fetchSmtpStatus();
   }, []);

@@ -16,40 +16,90 @@ export interface Order {
 
 const metaEnv = (import.meta as any).env || {};
 
-// Check if Firebase configuration environment variables are present
-const firebaseConfig = {
-  apiKey: metaEnv.VITE_FIREBASE_API_KEY,
-  authDomain: metaEnv.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: metaEnv.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: metaEnv.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: metaEnv.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: metaEnv.VITE_FIREBASE_APP_ID,
+const sanitizeEnvVal = (val: any): string | undefined => {
+  if (typeof val === 'string') {
+    const trimmed = val.trim();
+    return trimmed.replace(/^["']|["']$/g, '');
+  }
+  return val;
 };
 
-const isFirebaseConfigured = !!(
-  firebaseConfig.apiKey &&
-  firebaseConfig.projectId &&
-  firebaseConfig.appId
-);
-
 let db: any = null;
+let initPromise: Promise<any> | null = null;
 
-if (isFirebaseConfigured) {
-  try {
-    const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
-    db = getFirestore(app);
-    console.log('Firebase initialized successfully.');
-  } catch (error) {
-    console.error('Error initializing Firebase SDK:', error);
-  }
-} else {
-  console.log('Firebase credentials not detected. Falling back to local Storage for order database.');
+export async function ensureFirebaseInitialized(): Promise<any> {
+  if (db) return db;
+  if (initPromise) return initPromise;
+
+  initPromise = (async () => {
+    // 1. Try static env first
+    let apiKey = sanitizeEnvVal(metaEnv.VITE_FIREBASE_API_KEY);
+    let authDomain = sanitizeEnvVal(metaEnv.VITE_FIREBASE_AUTH_DOMAIN);
+    let projectId = sanitizeEnvVal(metaEnv.VITE_FIREBASE_PROJECT_ID);
+    let storageBucket = sanitizeEnvVal(metaEnv.VITE_FIREBASE_STORAGE_BUCKET);
+    let messagingSenderId = sanitizeEnvVal(metaEnv.VITE_FIREBASE_MESSAGING_SENDER_ID);
+    let appId = sanitizeEnvVal(metaEnv.VITE_FIREBASE_APP_ID);
+
+    // 2. Fetch from Express API endpoint if needed
+    if (!apiKey || !projectId || !appId) {
+      try {
+        const res = await fetch('/api/firebase-config');
+        if (res.ok) {
+          const serverConfig = await res.json();
+          if (serverConfig.apiKey) apiKey = sanitizeEnvVal(serverConfig.apiKey);
+          if (serverConfig.authDomain) authDomain = sanitizeEnvVal(serverConfig.authDomain);
+          if (serverConfig.projectId) projectId = sanitizeEnvVal(serverConfig.projectId);
+          if (serverConfig.storageBucket) storageBucket = sanitizeEnvVal(serverConfig.storageBucket);
+          if (serverConfig.messagingSenderId) messagingSenderId = sanitizeEnvVal(serverConfig.messagingSenderId);
+          if (serverConfig.appId) appId = sanitizeEnvVal(serverConfig.appId);
+        }
+      } catch (err) {
+        console.error('Failed to load Firebase config from server API:', err);
+      }
+    }
+
+    if (apiKey && projectId && appId) {
+      try {
+        const config = {
+          apiKey,
+          authDomain,
+          projectId,
+          storageBucket,
+          messagingSenderId,
+          appId,
+        };
+        const app = getApps().length === 0 ? initializeApp(config) : getApp();
+        db = getFirestore(app);
+        console.log('Firebase initialized successfully.');
+      } catch (error) {
+        console.error('Error initializing Firebase SDK:', error);
+      }
+    } else {
+      console.log('Firebase credentials not detected. Falling back to local Storage for order database.');
+    }
+    return db;
+  })();
+
+  return initPromise;
+}
+
+// Eagerly trigger in background on import
+ensureFirebaseInitialized().catch(err => {
+  console.error('Eager Firebase init failed:', err);
+});
+
+/**
+ * Returns whether real Firebase database is active synchronously.
+ */
+export function isFirebaseActive(): boolean {
+  return db !== null;
 }
 
 /**
- * Returns whether real Firebase database is active.
+ * Returns whether real Firebase database is active asynchronously.
  */
-export function isFirebaseActive(): boolean {
+export async function isFirebaseActiveAsync(): Promise<boolean> {
+  await ensureFirebaseInitialized();
   return db !== null;
 }
 
@@ -65,6 +115,7 @@ export async function saveOrder(orderInput: {
   productName?: string;
   quantity?: number;
 }): Promise<{ id: string; isLocal: boolean }> {
+  await ensureFirebaseInitialized();
   const newOrder: Omit<Order, 'id'> = {
     ...orderInput,
     createdAt: new Date().toISOString(),
@@ -124,6 +175,7 @@ export async function saveOrder(orderInput: {
  * Retrieve all orders from Firestore or LocalStorage.
  */
 export async function getOrders(): Promise<Order[]> {
+  await ensureFirebaseInitialized();
   if (db) {
     try {
       const ordersCol = collection(db, 'orders');
@@ -159,6 +211,7 @@ export async function getOrders(): Promise<Order[]> {
  * Update an order's status in Firestore or LocalStorage.
  */
 export async function updateOrderStatus(orderId: string, status: Order['status']): Promise<boolean> {
+  await ensureFirebaseInitialized();
   if (db && !orderId.startsWith('local_')) {
     try {
       const orderDocRef = doc(db, 'orders', orderId);
