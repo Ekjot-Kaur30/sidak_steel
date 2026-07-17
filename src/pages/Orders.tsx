@@ -84,7 +84,15 @@ export default function Orders() {
         body: JSON.stringify({ password: adminPasswordInput })
       });
 
-      const data = await res.json();
+      let text = '';
+      let data;
+      try {
+        text = await res.text();
+        data = JSON.parse(text);
+      } catch (parseErr) {
+        throw new Error(`Invalid JSON (HTTP ${res.status}): ${text.substring(0, 50)}...`);
+      }
+
       if (res.ok && data.success) {
         localStorage.setItem('sidak_admin_session', data.token);
         setIsAdminAuthenticated(true);
@@ -93,7 +101,7 @@ export default function Orders() {
         setAuthError(data.error || 'Incorrect passcode. Access Denied.');
       }
     } catch (err: any) {
-      setAuthError('Network communication error. Please try again.');
+      setAuthError(`Connection error: ${err.message || 'Please try again.'}`);
     } finally {
       setIsSubmittingAuth(false);
     }
