@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getOrders, updateOrderStatus, isFirebaseActiveAsync, Order } from '../lib/firebase';
 import { 
   Database, 
@@ -15,7 +15,10 @@ import {
   Package, 
   AlertTriangle,
   Send,
-  Settings
+  Settings,
+  Lock,
+  Unlock,
+  LogOut
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -34,14 +37,72 @@ export default function Orders() {
     port: string | null;
   } | null>(null);
 
+  const [isTestingSmtp, setIsTestingSmtp] = useState(false);
+  const [testSmtpResult, setTestSmtpResult] = useState<{
+    success: boolean;
+    message?: string;
+    error?: string;
+    code?: string;
+    response?: string;
+  } | null>(null);
+
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [adminPasswordInput, setAdminPasswordInput] = useState('');
+  const [isSubmittingAuth, setIsSubmittingAuth] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
+
   useEffect(() => {
     document.title = "Orders Dashboard | Sidak Steel";
+    
+    // Check local storage for active session
+    const activeSession = localStorage.getItem('sidak_admin_session');
+    if (activeSession === 'sidak-steel-admin-session-granted-2026') {
+      setIsAdminAuthenticated(true);
+    }
+
     isFirebaseActiveAsync().then((connected) => {
       setIsFirebaseConnected(connected);
     });
     fetchOrders();
     fetchSmtpStatus();
   }, []);
+
+  const handleAdminLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!adminPasswordInput.trim()) {
+      setAuthError('Please enter the admin passcode.');
+      return;
+    }
+
+    setIsSubmittingAuth(true);
+    setAuthError(null);
+
+    try {
+      const res = await fetch('/api/admin-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: adminPasswordInput })
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        localStorage.setItem('sidak_admin_session', data.token);
+        setIsAdminAuthenticated(true);
+        setAdminPasswordInput('');
+      } else {
+        setAuthError(data.error || 'Incorrect passcode. Access Denied.');
+      }
+    } catch (err: any) {
+      setAuthError('Network communication error. Please try again.');
+    } finally {
+      setIsSubmittingAuth(false);
+    }
+  };
+
+  const handleAdminLogout = () => {
+    localStorage.removeItem('sidak_admin_session');
+    setIsAdminAuthenticated(false);
+  };
 
   const fetchSmtpStatus = async () => {
     try {
@@ -50,6 +111,29 @@ export default function Orders() {
       setSmtpStatus(data);
     } catch (err) {
       console.error('Error fetching SMTP status:', err);
+    }
+  };
+
+  const handleTestSmtp = async () => {
+    setIsTestingSmtp(true);
+    setTestSmtpResult(null);
+    try {
+      const res = await fetch('/api/test-smtp');
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setTestSmtpResult({ success: true, message: data.message });
+      } else {
+        setTestSmtpResult({ 
+          success: false, 
+          error: data.error || 'Connection failed', 
+          code: data.code,
+          response: data.response
+        });
+      }
+    } catch (err: any) {
+      setTestSmtpResult({ success: false, error: err.message || 'Network communication error' });
+    } finally {
+      setIsTestingSmtp(false);
     }
   };
 
@@ -125,9 +209,92 @@ export default function Orders() {
     return matchesSearch && matchesStatus;
   });
 
+  if (!isAdminAuthenticated) {
+    return (
+      <div className="py-20 md:py-32 min-h-[85vh] flex items-center justify-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+          className="w-full max-w-md mx-auto px-4"
+        >
+          <div className="glass p-8 md:p-10 rounded-3xl shadow-xl border border-white/25 text-center relative overflow-hidden">
+            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-slate-700 via-slate-900 to-slate-800"></div>
+            
+            {/* Lock Circle Icon */}
+            <div className="mx-auto w-16 h-16 bg-slate-100/80 rounded-2xl flex items-center justify-center border border-slate-200/50 shadow-inner mb-6 text-slate-800">
+              <Lock className="w-8 h-8" />
+            </div>
+
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">Sidak Steel</h1>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Admin Control Panel</h2>
+            
+            <p className="text-slate-600 font-medium text-sm leading-relaxed mb-8">
+              This dashboard contains wholesale quotations and bulk customer orders. Please enter your administrator passcode to proceed.
+            </p>
+
+            <form onSubmit={handleAdminLogin} className="space-y-4 text-left">
+              <div>
+                <label htmlFor="admin-passcode" className="block text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">
+                  Admin Passcode
+                </label>
+                <input
+                  id="admin-passcode"
+                  type="password"
+                  placeholder="••••••••"
+                  value={adminPasswordInput}
+                  onChange={(e) => {
+                    setAdminPasswordInput(e.target.value);
+                    if (authError) setAuthError(null);
+                  }}
+                  className="w-full px-4 py-3.5 bg-white/50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-slate-900 focus:bg-white outline-none font-bold text-slate-900 placeholder-slate-300 transition-all text-center tracking-widest"
+                  disabled={isSubmittingAuth}
+                  autoFocus
+                />
+              </div>
+
+              {authError && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700 font-bold text-center"
+                >
+                  ⚠️ {authError}
+                </motion.div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmittingAuth}
+                className="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-sm font-black shadow-md transition-all hover:scale-101 active:scale-99 disabled:opacity-75 cursor-pointer flex items-center justify-center gap-2"
+              >
+                {isSubmittingAuth ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    Authorizing...
+                  </>
+                ) : (
+                  <>
+                    <Unlock className="w-4 h-4" />
+                    Unlock Dashboard
+                  </>
+                )}
+              </button>
+            </form>
+
+            <div className="mt-8 pt-6 border-t border-slate-200/50 text-[11px] text-slate-400 font-bold">
+              Default local test passcode is <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-mono text-xs">admin</code>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
     <div className="py-12 md:py-20 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         
         {/* Header section with Database Connection Status */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 glass p-8 md:p-10 rounded-3xl shadow-sm">
@@ -158,6 +325,16 @@ export default function Orders() {
             >
               <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
             </button>
+
+            <button
+              onClick={handleAdminLogout}
+              className="px-4 py-2.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-2xl shadow-sm text-rose-700 font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+              title="Log Out Admin"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Log Out</span>
+            </button>
+
           </div>
         </div>
 
@@ -186,7 +363,7 @@ export default function Orders() {
             }`}>
               <Mail className="w-5 h-5" />
             </div>
-            <div className="space-y-1.5 flex-grow">
+            <div className="space-y-1.5 flex-grow w-full">
               <div className="flex flex-wrap items-center gap-2">
                 <h3 className="font-bold text-base text-slate-900">
                   {smtpStatus.configured ? 'Admin Email Alerts Active' : 'Admin Email Alerts Pending Setup'}
@@ -208,6 +385,61 @@ export default function Orders() {
                   </>
                 )}
               </p>
+
+              {/* SMTP Diagnostic Test Section */}
+              <div className="mt-4 pt-4 border-t border-slate-200/60 flex flex-col gap-3">
+                <div className="flex items-center justify-between flex-wrap gap-4">
+                  <span className="text-xs text-slate-500 font-bold">
+                    Want to test your SMTP configuration right now?
+                  </span>
+                  <button
+                    onClick={handleTestSmtp}
+                    disabled={isTestingSmtp}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-black shadow-sm transition-all hover:scale-102 active:scale-98 disabled:opacity-75 cursor-pointer"
+                  >
+                    {isTestingSmtp ? (
+                      <>
+                        <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                        Testing Connection...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-3.5 h-3.5" />
+                        Send Test Email
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {testSmtpResult && (
+                  <div className={`p-4 rounded-xl text-xs font-medium border transition-all ${
+                    testSmtpResult.success 
+                      ? 'bg-emerald-100 border-emerald-200 text-emerald-950' 
+                      : 'bg-rose-50 border-rose-200 text-rose-950'
+                  }`}>
+                    <div className="font-bold mb-1 flex items-center gap-1.5">
+                      {testSmtpResult.success ? '✅ SMTP Connection & Delivery Test Succeeded!' : '❌ SMTP Handshake / Connection Failed'}
+                    </div>
+                    <p className="opacity-90 leading-normal">{testSmtpResult.message || testSmtpResult.error}</p>
+                    
+                    {!testSmtpResult.success && (
+                      <div className="mt-3 bg-rose-100/60 p-3 rounded-lg font-mono text-[10px] space-y-1">
+                        {testSmtpResult.code && <div><strong>Error Code:</strong> {testSmtpResult.code}</div>}
+                        {testSmtpResult.response && <div><strong>Server Response:</strong> {testSmtpResult.response}</div>}
+                        <div className="pt-2 border-t border-rose-200/75 text-slate-700 leading-normal font-sans text-xs">
+                          <h4 className="font-black text-slate-950 mb-1">Common Troubleshooting Steps:</h4>
+                          <ol className="list-decimal pl-4 space-y-1 text-[11px] font-medium">
+                            <li>Make sure you use a 16-character <strong>App Password</strong>, NOT your normal Gmail login password!</li>
+                            <li>Confirm that <strong>2-Step Verification</strong> is enabled in your Google Account security settings.</li>
+                            <li>Verify your username <span className="font-mono bg-white/60 px-1 rounded">{smtpStatus.smtpUser || smtpStatus.adminEmail}</span> is correct.</li>
+                            <li>Restart the server or re-verify your environment variables.</li>
+                          </ol>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}

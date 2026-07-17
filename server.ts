@@ -12,13 +12,19 @@ const PORT = 3000;
 
 app.use(express.json());
 
+// Helper to sanitize environment variables (trims spaces and strips surrounding quotes)
+const cleanEnv = (val: string | undefined): string => {
+  if (!val) return '';
+  return val.trim().replace(/^["']|["']$/g, '');
+};
+
 // API: Check SMTP connection configuration
 app.get('/api/smtp-status', async (req, res) => {
-  const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const adminEmail = process.env.ADMIN_EMAIL || 'ekjotkaur570@gmail.com';
+  const host = cleanEnv(process.env.SMTP_HOST);
+  const port = cleanEnv(process.env.SMTP_PORT);
+  const user = cleanEnv(process.env.SMTP_USER);
+  const pass = cleanEnv(process.env.SMTP_PASS);
+  const adminEmail = cleanEnv(process.env.ADMIN_EMAIL) || 'ekjotkaur570@gmail.com';
 
   const isConfigured = !!(host && port && user && pass);
 
@@ -29,6 +35,85 @@ app.get('/api/smtp-status', async (req, res) => {
     host,
     port,
   });
+});
+
+// API: SMTP Connection & Send Diagnostics
+app.get('/api/test-smtp', async (req, res) => {
+  const host = cleanEnv(process.env.SMTP_HOST);
+  const port = cleanEnv(process.env.SMTP_PORT);
+  const user = cleanEnv(process.env.SMTP_USER);
+  const pass = cleanEnv(process.env.SMTP_PASS);
+  const adminEmail = cleanEnv(process.env.ADMIN_EMAIL) || 'ekjotkaur570@gmail.com';
+
+  if (!host || !port || !user || !pass) {
+    return res.status(400).json({ success: false, error: 'SMTP configuration is incomplete in .env' });
+  }
+
+  try {
+    let transporterOptions: any = {};
+    if (host.toLowerCase().includes('smtp.gmail.com') || host.toLowerCase() === 'gmail') {
+      transporterOptions = {
+        service: 'gmail',
+        auth: {
+          user,
+          pass,
+        },
+      };
+    } else {
+      transporterOptions = {
+        host,
+        port: parseInt(port || '587'),
+        secure: port === '465',
+        auth: {
+          user,
+          pass,
+        },
+        tls: {
+          rejectUnauthorized: false
+        }
+      };
+    }
+
+    const transporter = nodemailer.createTransport(transporterOptions);
+    
+    // Test SMTP Handshake
+    await transporter.verify();
+
+    // Send Real Test Email
+    const info = await transporter.sendMail({
+      from: `"Sidak Steel Test" <${user}>`,
+      to: adminEmail,
+      subject: '🧪 Sidak Steel SMTP Test Connection Success',
+      text: `Congratulations! Your SMTP configuration is correct and fully functional. Incoming customer orders will be sent to ${adminEmail}!`,
+      html: `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 24px; border: 1px solid #e2e8f0; border-radius: 16px; background-color: #ffffff;">
+          <h2 style="color: #10b981; margin-top: 0; font-size: 20px; font-weight: 800;">🚀 Connection Test Successful!</h2>
+          <p style="color: #334155; font-size: 14px; line-height: 1.5;">Your Sidak Steel email order notification system has been successfully verified.</p>
+          <div style="background-color: #f8fafc; border: 1px solid #f1f5f9; border-radius: 12px; padding: 16px; font-size: 13px; color: #1e293b; margin: 16px 0;">
+            <div style="margin-bottom: 8px;"><strong>Admin Email:</strong> ${adminEmail}</div>
+            <div style="margin-bottom: 8px;"><strong>SMTP Service:</strong> ${host}:${port}</div>
+            <div><strong>SMTP Account:</strong> ${user}</div>
+          </div>
+          <p style="font-size: 12px; color: #64748b; margin: 0;">This test proves that the server is able to securely login and dispatch emails to your inbox.</p>
+        </div>
+      `
+    });
+
+    return res.json({ 
+      success: true, 
+      message: 'SMTP configuration is valid. Test email sent successfully!', 
+      messageId: info.messageId 
+    });
+  } catch (error: any) {
+    console.error('❌ [SMTP Test Diagnostics Failed]:', error);
+    return res.status(500).json({ 
+      success: false, 
+      error: error.message || 'SMTP Diagnostic Failed',
+      code: error.code || 'UNKNOWN',
+      command: error.command || 'UNKNOWN',
+      response: error.response || 'No SMTP response'
+    });
+  }
 });
 
 // API: Deliver non-sensitive Firebase client config securely to frontend
@@ -43,6 +128,18 @@ app.get('/api/firebase-config', (req, res) => {
   });
 });
 
+// API: Verify Admin Access Password
+app.post('/api/admin-login', (req, res) => {
+  const { password } = req.body;
+  const configuredPassword = cleanEnv(process.env.ADMIN_PASSWORD) || 'admin';
+  
+  if (password && password.trim() === configuredPassword.trim()) {
+    return res.json({ success: true, token: 'sidak-steel-admin-session-granted-2026' });
+  } else {
+    return res.status(401).json({ success: false, error: 'Incorrect admin passcode. Please try again.' });
+  }
+});
+
 // API: Send bulk order/query notification to Admin
 app.post('/api/notify-admin', async (req, res) => {
   const { id, name, email, phone, subject, message, productName, quantity, createdAt } = req.body;
@@ -51,11 +148,11 @@ app.post('/api/notify-admin', async (req, res) => {
     return res.status(400).json({ success: false, error: 'Missing required order details' });
   }
 
-  const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const adminEmail = process.env.ADMIN_EMAIL || 'ekjotkaur570@gmail.com';
+  const host = cleanEnv(process.env.SMTP_HOST);
+  const port = cleanEnv(process.env.SMTP_PORT);
+  const user = cleanEnv(process.env.SMTP_USER);
+  const pass = cleanEnv(process.env.SMTP_PASS);
+  const adminEmail = cleanEnv(process.env.ADMIN_EMAIL) || 'ekjotkaur570@gmail.com';
 
   const isConfigured = !!(host && port && user && pass);
 
@@ -70,15 +167,33 @@ app.post('/api/notify-admin', async (req, res) => {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host,
-      port: parseInt(port || '587'),
-      secure: port === '465', // Use SSL for port 465
-      auth: {
-        user,
-        pass,
-      },
-    });
+    let transporterOptions: any = {};
+    
+    // For Gmail, use built-in 'gmail' service which is highly optimized & bypasses manual TLS handshakes
+    if (host.toLowerCase().includes('smtp.gmail.com') || host.toLowerCase() === 'gmail') {
+      transporterOptions = {
+        service: 'gmail',
+        auth: {
+          user,
+          pass,
+        },
+      };
+    } else {
+      transporterOptions = {
+        host,
+        port: parseInt(port || '587'),
+        secure: port === '465', // Use SSL for port 465
+        auth: {
+          user,
+          pass,
+        },
+        tls: {
+          rejectUnauthorized: false // Avoid connection refusal on custom setups
+        }
+      };
+    }
+
+    const transporter = nodemailer.createTransport(transporterOptions);
 
     const isSpecificItem = !!productName;
     const formattedDate = new Date(createdAt || new Date()).toLocaleString('en-US', {
