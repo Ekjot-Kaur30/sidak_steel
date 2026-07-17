@@ -130,18 +130,29 @@ app.get('/api/firebase-config', (req, res) => {
 
 // API: Verify Admin Access Password
 app.post('/api/admin-login', (req, res) => {
-  const { password } = req.body;
-  const configuredPassword = cleanEnv(process.env.ADMIN_PASSWORD) || 'admin';
-  
-  if (password && password.trim() === configuredPassword.trim()) {
-    return res.json({ success: true, token: 'sidak-steel-admin-session-granted-2026' });
-  } else {
-    return res.status(401).json({ success: false, error: 'Incorrect admin passcode. Please try again.' });
+  try {
+    if (!req.body) {
+      return res.status(400).json({ success: false, error: 'Invalid request body' });
+    }
+    const { password } = req.body;
+    const configuredPassword = cleanEnv(process.env.ADMIN_PASSWORD) || 'admin';
+    
+    if (password && typeof password === 'string' && password.trim() === configuredPassword.trim()) {
+      return res.json({ success: true, token: 'sidak-steel-admin-session-granted-2026' });
+    } else {
+      return res.status(401).json({ success: false, error: 'Incorrect admin passcode. Please try again.' });
+    }
+  } catch (error: any) {
+    console.error('Login error:', error);
+    return res.status(500).json({ success: false, error: 'Internal server error during login' });
   }
 });
 
 // API: Send bulk order/query notification to Admin
 app.post('/api/notify-admin', async (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({ success: false, error: 'Invalid request body' });
+  }
   const { id, name, email, phone, subject, message, productName, quantity, createdAt } = req.body;
 
   if (!name || !email || !subject || !message) {
