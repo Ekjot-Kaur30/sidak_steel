@@ -155,11 +155,19 @@ export async function saveOrder(orderInput: {
         ...newOrder,
       }),
     }).then(async (res) => {
-      const data = await res.json();
-      if (data.success) {
-        console.log('Admin notified via email successfully');
-      } else {
-        console.warn('Admin email notification status:', data.error || 'Config pending');
+      if (!res.ok) {
+        console.warn('Backend API not available. Skipping email notification.');
+        return;
+      }
+      try {
+        const data = await res.json();
+        if (data.success) {
+          console.log('Admin notified via email successfully');
+        } else {
+          console.warn('Admin email notification status:', data.error || 'Config pending');
+        }
+      } catch (err) {
+        console.warn('Failed to parse notify-admin response:', err);
       }
     }).catch(err => {
       console.error('Failed to trigger admin email notification:', err);

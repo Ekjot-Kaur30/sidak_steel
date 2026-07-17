@@ -78,22 +78,35 @@ export default function Orders() {
     setAuthError(null);
 
     try {
+      const configuredPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'admin';
+      
+      // Attempt backend authentication first
       const res = await fetch('/api/admin-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: adminPasswordInput })
       });
 
-      let text = '';
       let data;
+      const text = await res.text();
+      
       try {
-        text = await res.text();
         data = JSON.parse(text);
       } catch (parseErr) {
-        throw new Error(`Invalid JSON (HTTP ${res.status}): ${text.substring(0, 50)}...`);
+        // Fallback for static hosting (Vercel/Firebase) where Express is not running
+        if (res.status === 404 || text.includes('<html')) {
+          console.warn('Backend API not found, falling back to client-side static auth.');
+          if (adminPasswordInput.trim() === configuredPassword.trim()) {
+            data = { success: true, token: 'sidak-steel-admin-session-granted-2026' };
+          } else {
+            data = { success: false, error: 'Incorrect passcode. Access Denied.' };
+          }
+        } else {
+          throw new Error(`Invalid JSON (HTTP ${res.status}): ${text.substring(0, 50)}...`);
+        }
       }
 
-      if (res.ok && data.success) {
+      if (data.success) {
         localStorage.setItem('sidak_admin_session', data.token);
         setIsAdminAuthenticated(true);
         setAdminPasswordInput('');
@@ -291,7 +304,7 @@ export default function Orders() {
             </form>
 
             <div className="mt-8 pt-6 border-t border-slate-200/50 text-[11px] text-slate-400 font-bold">
-              Passcode can be securely updated in AI Studio Settings using <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-mono text-xs">ADMIN_PASSWORD</code>
+              Passcode can be securely updated in AI Studio Settings (or your hosting provider) using <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-mono text-xs">VITE_ADMIN_PASSWORD</code>
             </div>
           </div>
         </motion.div>
