@@ -8,42 +8,42 @@ const whyChooseFeatures = [
     icon: Award,
     shortDesc: 'High-grade rust-resistant steel that lasts for generations.',
     longDesc: 'Our stainless steel products are manufactured using 100% food-grade material, ensuring they remain completely rust and corrosion free even after years of daily use. The elegant mirror finish not only adds a touch of luxury but makes them incredibly easy to clean and maintain.',
-    images: ['/images/dinner_set_1783603542763.jpg', '/images/pressure_cooker_1783603530362.jpg', '/images/lota_1783603449089.jpg']
+    images: ['/images/dinner.jpg', '/images/cooker.jpg', '/images/stainless_steel_lota.webp']
   },
   {
     title: 'Durable Products',
     icon: ShieldCheck,
     shortDesc: 'Heavy-gauge designs engineered to withstand rugged daily use.',
     longDesc: 'Built with heavy-gauge industrial standards, our utensils offer remarkable dent resistance and structure preservation. From commercial cooking pots to residential pressure cookers, we guarantee durability that stands the test of time.',
-    images: ['/images/stainless_steel_kadai_1783664165512.jpg', '/images/casserole_1783604830092.jpg']
+    images: ['/images/kadai.jpg', '/images/colander.jpg']
   },
   {
     title: 'Affordable Prices',
     icon: Banknote,
     shortDesc: 'Wholesale-competitive rates without compromise on grade.',
     longDesc: 'We believe that premium quality shouldn’t come with a premium price tag. By optimizing our manufacturing processes and offering direct wholesale prices, Sidak Steel ensures that both individual households and commercial restaurants can access top-tier kitchenware without breaking the bank.',
-    images: ['/images/katori_1783603516071.jpg', '/images/glass_1783603466189.jpg']
+    images: ['/images/bowl.jpg', '/images/canaster.jpg']
   },
   {
     title: 'Bulk Orders',
     icon: Package,
     shortDesc: 'High-capacity supply chains ready to fulfill large commercial lots.',
     longDesc: 'Whether you are looking for airtight storage containers to keep your spices fresh, heavy-duty cookware for professional use, or elegant serving trays for guests, our factory is fully optimized for scale. We handle high-volume bulk requirements with customized logo branding support.',
-    images: ['/images/steel_boxes_1783605604566.jpg', '/images/food_storage_1783604778508.jpg']
+    images: ['/images/cup.jpg', '/images/container.jpg']
   },
   {
     title: 'Trusted Supplier',
     icon: Handshake,
     shortDesc: 'Decades of manufacturing integrity, trusted nationwide.',
     longDesc: 'Since 2017, we have worked with major distributors, institutional clients, and hoteliers across the nation. We adhere to food-grade materials certifications and maintain complete transparency in our billing, pricing, and steel grade reporting.',
-    images: ['/images/hotel_utensils_1783604950553.jpg', '/images/warehouse_utensils_1783747891622.jpg']
+    images: ['/images/jug.jpg', '/images/images.jpg']
   },
   {
     title: 'Fast Delivery',
     icon: Truck,
     shortDesc: 'Quick and secure nationwide shipping for all bulk orders.',
     longDesc: 'We understand the importance of timely delivery, especially for commercial clients setting up a new kitchen. Our robust logistics network ensures that whether you are ordering a single dinner set or bulk items for a hotel, your products arrive safely and promptly across the nation.',
-    images: ['/images/fry_pan_1783603493034.jpg', '/images/tiffin_1783603479978.jpg']
+    images: ['/images/fry pan.jpg', '/images/tiffin.jpg']
   }
 ];
 
@@ -132,7 +132,7 @@ export default function Home() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-md aspect-square bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-3xl overflow-hidden group border border-slate-200/40 p-4 flex items-center justify-center">
                 <img 
-                  src="/images/hero_utensils_collection_1783747873377.jpg" 
+                  src="/images/hero.jpg" 
                   alt="Sidak Steel premium stainless steel utensils collection including pots, pans, bowls, plates, and canisters with clean bright white studio background" 
                   className="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
@@ -261,15 +261,15 @@ export default function Home() {
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/tiffin_1783603479978.jpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
-              { name: 'Stainless Steel Pressure Cooker', image: '/images/pressure_cooker_1783603530362.jpg', desc: 'Heavy induction-compatible safety cooker' },
-              { name: 'Traditional Stainless Steel Lota', image: '/images/lota_1783603449089.jpg', desc: 'Heavy-duty polished traditional water lota for home' },
-              { name: 'Airtight Spice Box (Masala Dabba)', image: '/images/masala_dabba_1783604804974.jpg', desc: 'Traditional 7-compartment kitchen organizer' },
-              { name: 'Heavy-Duty Stainless Steel Kadai', image: '/images/stainless_steel_kadai_1783664165512.jpg', desc: 'Double riveted high-capacity helper wok' },
-              { name: 'Modern Whistling Tea Kettle', image: '/images/stainless_steel_kettle_1783664186975.jpg', desc: 'Flat capsule fast-boiling aesthetic kettle' },
-              { name: 'Airtight Steel Canister Storage Set', image: '/images/food_storage_1783604778508.jpg', desc: 'Preserves culinary ingredients fresh and dry' },
-              { name: 'Stainless Steel Colander & Strainer', image: '/images/colander_1783604857618.jpg', desc: 'Deep perforated wash-drain basket' },
-              { name: 'Premium Stainless Steel Kitchen Rack', image: '/images/steel_kitchen_rack_1783747938411.jpg', desc: 'Sturdy multi-tier space-saving organizer rack' }
+              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/tiffin.jpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
+              { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg', desc: 'Heavy induction-compatible safety cooker' },
+              { name: 'Traditional Stainless Steel Lota', image: '/images/stainless_steel_lota.webp', desc: 'Heavy-duty polished traditional water lota for home' },
+              { name: 'Airtight Spice Box (Masala Dabba)', image: '/images/masala.jpg', desc: 'Traditional 7-compartment kitchen organizer' },
+              { name: 'Heavy-Duty Stainless Steel Kadai', image: '/images/kadai.jpg', desc: 'Double riveted high-capacity helper wok' },
+              { name: 'Modern Whistling Tea Kettle', image: '/images/tea.jpg', desc: 'Flat capsule fast-boiling aesthetic kettle' },
+              { name: 'Airtight Steel Canister Storage Set', image: '/images/container.jpg', desc: 'Preserves culinary ingredients fresh and dry' },
+              { name: 'Stainless Steel Colander & Strainer', image: '/images/colander.jpg', desc: 'Deep perforated wash-drain basket' },
+              { name: 'Premium Stainless Steel Kitchen Rack', image: '/images/rack.jpg', desc: 'Sturdy multi-tier space-saving organizer rack' }
             ].map((item, index) => (
               <div 
                 key={index} 
