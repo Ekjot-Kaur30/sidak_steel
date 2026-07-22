@@ -43,7 +43,7 @@ const whyChooseFeatures = [
     icon: Truck,
     shortDesc: 'Quick and secure nationwide shipping for all bulk orders.',
     longDesc: 'We understand the importance of timely delivery, especially for commercial clients setting up a new kitchen. Our robust logistics network ensures that whether you are ordering a single dinner set or bulk items for a hotel, your products arrive safely and promptly across the nation.',
-    images: ['/images/fry pan.jpg', '/images/tiffin.jpg']
+    images: ['/images/fry pan.jpg', '/images/lunch.jpg']
   }
 ];
 
@@ -223,12 +223,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             {[
-              { name: 'Stainless Steel Dinner Set', image: '/images/dinner_set_1783603542763.jpg' },
-              { name: 'Stainless Steel Lota', image: '/images/lota_1783603449089.jpg' },
-              { name: 'Stainless Steel Tiffin Box', image: '/images/tiffin_1783603479978.jpg' },
-              { name: 'Stainless Steel Pressure Cooker', image: '/images/pressure_cooker_1783603530362.jpg' },
-              { name: 'Stainless Steel Tray', image: '/images/tray_1783603506131.jpg' },
-              { name: 'Stainless Steel Bowl (Katori)', image: '/images/katori_1783603516071.jpg' }
+              { name: 'Stainless Steel Dinner Set', image: '/images/dinner.jpg' },
+              { name: 'Stainless Steel Lota', image: '/images/stainless_steel_lota.webp' },
+              { name: 'Stainless Steel Tiffin Box', image: '/images/lunch.jpg' },
+              { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg' },
+              { name: 'Stainless Steel Tray', image: '/images/tray.jpg' },
+              { name: 'Stainless Steel Bowl (Katori)', image: '/images/bowl.jpg' }
             ].map((product, index) => (
               <Link to="/products" key={index} className="glass p-6 rounded-3xl text-center hover:bg-white/50 hover:scale-105 active:scale-95 transition-all cursor-pointer group block h-full">
                 <div className="w-full aspect-square bg-white/40 shadow-[inset_0_0_20px_rgba(0,0,0,0.05)] rounded-2xl mb-4 flex items-center justify-center group-hover:bg-white/60 transition-colors overflow-hidden">
@@ -261,7 +261,7 @@ export default function Home() {
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/tiffin.jpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
+              { name: 'Premium Stainless Steel Tiffin Box', image: '/images/lunch.jpg', desc: 'Secure 3-tier leak-resistant lunch carrier' },
               { name: 'Stainless Steel Pressure Cooker', image: '/images/cooker.jpg', desc: 'Heavy induction-compatible safety cooker' },
               { name: 'Traditional Stainless Steel Lota', image: '/images/stainless_steel_lota.webp', desc: 'Heavy-duty polished traditional water lota for home' },
               { name: 'Airtight Spice Box (Masala Dabba)', image: '/images/masala.jpg', desc: 'Traditional 7-compartment kitchen organizer' },
